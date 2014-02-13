@@ -107,6 +107,14 @@ public class RunManager {
 		return run;
 	}
 	
+	public void insertLocation(Location loc){
+		if(mCurrentRunId != -1){
+			mHelper.insertLocation(mCurrentRunId, loc);
+		}else{
+			Log.e(TAG, "Location received with no tracking run; ignoring.");
+		}
+	}
+	
 	public void stopLocationUpdates(){
 		PendingIntent pi = getLocationPendingIntent(false);
 		if (pi != null){
